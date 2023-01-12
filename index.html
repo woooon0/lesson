@@ -8,10 +8,21 @@
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
-    <div class="alert-box" id="alert">알림창임
-        <button onclick="document.getElementById('alert').style.display = 'none'">끄기</button>
+    <div class="alert-box" id="alert">
+        <p id="alertstr">알림창임</p>
+        <button onclick="turnOn('none')">끄기</button>
     </div>
-    <button onclick = "document.getElementById('alert').style.display ='block'">켜기</button>
+    <button onclick = "turnOn('block','아이디를 입력하세요')">버튼1</button>
+    <button onclick = "turnOn('block','비밀번호를 입력하세요')">버튼2</button>
+    
+    <script>
+
+        function turnOn(x,y){
+            document.getElementById('alert').style.display =x;
+            document.getElementById('alertstr').innerHTML = y;
+        }
+
+    </script>
 
 </body>
 </html>
