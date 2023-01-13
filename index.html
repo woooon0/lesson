@@ -18,34 +18,21 @@
             </button>
         </div>
     </nav>
-    <ul class="list-group">
-        <li class="list-group-item">An item</li>
-        <li class="list-group-item">A second item</li>
-        <li class="list-group-item">A third item</li>
-        <li class="list-group-item">A fourth item</li>
-        <li class="list-group-item">And a fifth one</li>
-      </ul>
-    <div class="alert-box" id="alert">
-        <p id="alertstr">알림창임</p>
-        <button id="close">끄기</button>
-    </div>
-    <button onclick = "turnOn('block','아이디를 입력하세요')">버튼1</button>
-    <button onclick = "turnOn('block','비밀번호를 입력하세요')">버튼2</button>
-    
+    <ul class='list'>
+        <li class="list-item">An item</li>
+        <li class="list-item">A second item</li>
+        <li class="list-item">A third item</li>
+        <li class="list-item">A fourth item</li>
+        <li class="list-item">And a fifth one</li>
+    </ul>
     <script>
 
-        document.getElementById('close').addEventListener('click', function(){
-            turnOn('none')
-        })
-
-        function turnOn(x,y){
-            document.getElementById('alert').style.display =x;
-            document.getElementById('alertstr').innerHTML = y;
-        }
+        document.querySelectorAll('.navbar-toggler')[0].addEventListener('click', function(){
+            document.querySelectorAll('.list')[0].classList.toggle('show');
+        }) 
 
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-</body>
 </body>
 </html>
