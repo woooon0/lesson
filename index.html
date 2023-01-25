@@ -14,6 +14,21 @@
     src="https://code.jquery.com/jquery-3.6.3.min.js"
     integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
     crossorigin="anonymous"></script>
+
+    <span class="badge bg-dark">Dark 🔄</span>
+
+    <script>
+        var count = 0;
+        $('.badge').on('click', function(){
+            count++;
+            if(count%2 != 0){
+                $('.badge').html('Light 🔄');
+            }
+            else{
+                $('.badge').html('Dark 🔄')
+            }
+        })
+    </script>
     <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
             <span class="navbar-brand">Navbar</span>
@@ -41,10 +56,10 @@
           <h4>로그인하세요</h4>
           <form action="success.html">
             <div class="my-3">
-              <input type="text" class="form-control-id">
+              <input type="text" class="email" id="id">
              </div>
              <div class="my-3">
-               <input type="password" class="form-control">
+               <input type="password" class="form-control" id="pw">
              </div>
              <button type="submit" class="btn btn-primary">전송</button>
              <button type="button" class="btn btn-danger" id="close">닫기</button>
@@ -64,30 +79,86 @@
             $('.black-bg').removeClass('show-modal');
             $('.login-btn').addClass('show-modal');
         });
+        
         $('form').on('submit',function(e){
-            if (($('.form-control-id').val() == '') && ($('.form-control').val() == '')){
+            var emailInput = $('#id').val();
+            var pasInput = $('#pw').val();
+            if ((emailInput== '') && (pasInput == '')){
                 e.preventDefault();
                 alert('아이디와 비번 빔')
             }
-            else if($('.form-control-id').val() == ''){
+            else if(emailInput == ''){
                 e.preventDefault();
                 alert('아이디 빔')
 
             }
-            else if($('.form-control').val() == ''){
+            else if(/\S+@\S+\.\S+/.test(emailInput) == false){
+                e.preventDefault();
+                alert('이메일 형식아님');
+            }
+            else if(pasInput == ''){
                 e.preventDefault();
                 alert('비번 빔')
                 
             }
-            else if($('.form-control').val().length < 6){
+            else if(pasInput.length < 6){
                 e.preventDefault();
                 alert('비번 6자이상')
                 
             }
+            else if(/[A-Z]/.test(pasInput) == false){
+                e.preventDefault();
+                alert('대문자 포함해');
+            }
         })
         
     </script>
+    <div class="sales"><span class="timer">5</span>초 이내 구매시 사은품 증정</div>
+    <script>
+        var time = 5;
+        function ctime(){
+            time--;
+            $('.timer').html(time);
+            if(time==0){
+            clearInterval(sint);
+            $('.sales').css("visibility","hidden");
+            }
+        }
+        var sint = setInterval(ctime,1000)
+        
+    </script>
 
+    <div style="overflow: hidden">
+        <div class="slide-container">
+        <div class="slide-box">
+            <img src="car1.png">
+        </div>
+        <div class="slide-box">
+            <img src="car2.png">
+        </div>
+        <div class="slide-box">
+            <img src="car3.png">
+        </div>
+        </div>
+    </div>
+    <button class="slide-1">1</button>
+    <button class="slide-2">2</button>
+    <button class="slide-3">3</button>
+    <script>
+        var crt = 1;
+        $('.slide-1').on('click',function(){
+            $('.slide-container').css('transform', 'translateX(0vw)');
+        })
+        $('.slide-2').on('click',function(){
+            $('.slide-container').css('transform', 'translateX(-100vw)');
+            
+        })
+        $('.slide-3').on('click',function(){
+            $('.slide-container').css('transform', 'translateX(-200vw)');
+        })
+    </script>
+
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </body>
 </html>
