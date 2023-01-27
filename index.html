@@ -81,13 +81,21 @@
 
     <script>
         $('.login-btn').on('click', function(){
-            $('.black-bg').addClass('show-modal');
-            $('.login-btn').removeClass('show-modal');
+            $('.black-bg').toggleClass('show-modal');
+            $('.login-btn').toggleClass('show-modal');
         });
-        $('.btn-danger').on('click', function(){
+        $('#close').on('click', function(){
             $('.black-bg').removeClass('show-modal');
             $('.login-btn').addClass('show-modal');
         });
+        
+        document.querySelector('.black-bg').addEventListener('click', function(e){
+
+        if(e.target == document.querySelector('.black-bg')){
+            $('.black-bg').toggleClass('show-modal')
+            $('.login-btn').toggleClass('show-modal')
+        }
+        })
         
         $('form').on('submit',function(e){
             var emailInput = $('#id').val();
@@ -122,8 +130,10 @@
         })
         
     </script>
+        
     <div class="sales"><span class="timer">5</span>초 이내 구매시 사은품 증정</div>
     <script>
+        
         var time = 5;
         function ctime(){
             time--;

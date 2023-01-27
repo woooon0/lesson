@@ -35,8 +35,9 @@
     background : rgba(0,0,0,0.5);
     z-index : 5;
     padding: 30px;
-    visibility: hidden;
+
     opacity: 0;
+    visibility: hidden;
     transition: all 1s;
 }
 .white-bg {
@@ -45,10 +46,9 @@
     padding: 30px;
 } 
 .login-btn {
-    display: none;
+    display: block;
 }
 .show-modal {
-    display: block;
     visibility: visible;
     opacity: 1;
 }
