@@ -14,7 +14,17 @@
     integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
     crossorigin="anonymous"></script>
 
-
+  <div class="container mt-3">
+    <div class="card p-3">
+      <span class="car-title">상품명</span>
+      <span class="car-price">가격</span>
+    </div>
+  </div>
+  <script>
+    var car2={name:'소나타', price:[50000, 3000, 4000]};
+    document.querySelector('.car-price').innerHTML = car2.price[0];
+    document.querySelector('.car-title').innerHTML = car2.name;
+  </script>
     <style>
         ul.list {
           list-style-type: none;
@@ -52,26 +62,71 @@
         .show {
           display: block;
         }
+        .form-hide {
+          display: none;
+        }
       </style>
     <div class="container mt-5">
         <ul class="list">
-          <li class="tab-button">Products</li>
-          <li class="tab-button orange">Information</li>
-          <li class="tab-button">Shipping</li>
+          <li class="tab-button" data-id = '0'>Products</li>
+          <li class="tab-button orange"data-id='1'>Information</li>
+          <li class="tab-button" data-id="2">Shipping</li>
         </ul>
-        <div class="tab-content">
+        <div class="tab-content" data-id="0">
           <p>상품설명입니다. Product</p>
         </div>
-        <div class="tab-content show">
+        <div class="tab-content show" data-id="1">
           <p>스펙설명입니다. Information</p>
         </div>
-        <div class="tab-content">
+        <div class="tab-content" data-id="2">
           <p>배송정보입니다. Shipping</p>
         </div>
       </div> 
       <script src="detailjs.js"></script>
 
 
+
+
+    <form class="container my-5 form-group">
+        <p>상품선택</p>
+        <select class="form-select mt-2">
+          <option>모자</option>
+          <option>셔츠</option>
+          <option>바지</option>
+        </select>
+    </form>
+    <form class="container my-5 form-group form-hide">
+      <p>상품선택</p>
+      <select class="form-select mt-2">
+        <option>95</option>
+        <option>100</option>
+      </select>
+  </form>
+  <script>
+    $('.form-select').eq(0).on('input', function(e){
+      var pants = [28, 30, 32, 34];
+      var shirts = [95, 100, 105];
+      if(e.currentTarget.value == '셔츠'){
+        $('.form-group').eq(1).removeClass('form-hide')
+        $('.form-select').eq(1).html('');
+        shirts.forEach(function(a){
+          $('.form-select').eq(1).append(`<option>${a}</option>`);
+        })
+      }
+      else if(e.currentTarget.value == '바지'){
+        $('.form-group').eq(1).removeClass('form-hide');
+        $('.form-select').eq(1).html('');
+        pants.forEach(function(a){
+          $('.form-select').eq(1).append(`<option>${a}</option>`);
+        })
+        
+      }
+
+      else{
+        $('.form-group').eq(1).addClass('form-hide')
+      }
+    })
+  </script>
     <div style="height: 1000px;"></div>
 
     

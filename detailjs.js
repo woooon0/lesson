@@ -1,9 +1,21 @@
 let tBtn = $('.tab-button');
 let tCtn = $('.tab-content');
-for(let i=0;i<tBtn.length;i++)
-    tBtn.eq(i).on('click', function(){
-        tBtn.removeClass('orange')
-        tBtn.eq(i).addClass('orange')
-        tCtn.removeClass('show')
-        tCtn.eq(i).addClass('show')
-    })
+$('.tab-button').click(function(e){
+    openTab(Number(e.target.dataset.id))
+})
+function openTab(x){
+    $('.tab-button').removeClass('orange');
+    $('.tab-button').eq(x).addClass('orange');
+    $('.tab-content').removeClass('show');
+    $('.tab-content').eq(x).addClass('show');
+}
+var names = ['흥민', '영희', '철수', '재석'];
+function findName(kname){
+    for(var i=0;i<names.length;i++){
+        if(names[i] == kname){
+            console.log('있어요')
+        }
+    }
+
+}
+findName('장원')
