@@ -1,21 +1,20 @@
-<div style="display : none">모달창0</div>
-<div style="display : none">모달창1</div>
-<div style="display : none">모달창2</div>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js">
 
-<button>버튼0</button>
-<button>버튼1</button>
-<button>버튼2</button>
-
-<script> 
-    var 버튼들 = document.querySelectorAll('button');
-    var 모달창들 = document.querySelectorAll('div');
-    
-    for (var i = 0; i < 3; i++){
-    
-      버튼들[i].addEventListener('click', function(){
-        모달창들[i].style.display = 'block';
-      });
-    
-    }
-    
+</script>
+<img id="test" src="https://codingapple1.github.io/kona.jpg">
+<script>
+    var 이미지로딩 = new Promise(function(성공, 실패){
+        var img = document.querySelector('#test');
+        img.addEventListener('load', function(){
+            성공();
+        })
+        img.addEventListener('error', function(){
+            실패();
+        })
+    })
+    이미지로딩.then(function(){
+        console.log('로딩성공')
+    }).catch(function(){
+        console.log('로딩실패')
+    })
 </script>
