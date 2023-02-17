@@ -2,19 +2,37 @@
 
 </script>
 <img id="test" src="https://codingapple1.github.io/kona.jpg">
+<body>
+    <button id="hibutton">ㅎㅇ</button>
+
+</body>
 <script>
-    var 이미지로딩 = new Promise(function(성공, 실패){
-        var img = document.querySelector('#test');
-        img.addEventListener('load', function(){
-            성공();
-        })
-        img.addEventListener('error', function(){
-            실패();
-        })
-    })
-    이미지로딩.then(function(){
-        console.log('로딩성공')
-    }).catch(function(){
-        console.log('로딩실패')
-    })
+    
+    async function 더하기(){
+        var 연산 = new Promise((성공, 실패)=>{
+            document.querySelector('#hibutton').addEventListener('click',function(){
+                성공();
+            });
+        });
+        var 결과 = await 연산
+        console.log('성공');
+    }
+
+        
+    더하기();
+
+    var 심볼 = Symbol('설명');
+    var height = Symbol('내키')
+
+    var weight = Symbol('내 몸무게')
+    var person = {name:'kim', [height] : 160};
+    person.weight = 100;
+    person[weight] = 200;
+    person[키] = 160;
+    console.log(person)
+    for(var i in person){
+        console.log(person[i])
+    }
+    var a = Symbol.for('설명1')
+    var b = Symbol.for('설명1')
 </script>
