@@ -66,20 +66,39 @@ class Cloud{
 
 
 class lCactus {
-    constructor(e){
+    constructor(e1){
         this.x = 3000;
         this.y = 326 ; 
         this.width = 34;
         this.height = 70;
-        this.sprite = e;
+        this.sprite = 446;
+        this.e = e1
 
 
     }
     draw(){
 
-        ctx.drawImage(img1,this.sprite,2,34,70,this.x,this.y,this.width,this.height)
+        if(this.e==0){
+            ctx.drawImage(img1,446,2,34,70,this.x,this.y,this.width,this.height)
+        }
+        else if(this.e==1){
+            ctx.drawImage(img1,480,2,34,70,this.x,this.y,this.width,this.height)
+        }
+        else if(this.e==2){
+            ctx.drawImage(img1,514,2,34,70,this.x,this.y,this.width,this.height)
+        }
+        else if(this.e==3){
+            ctx.drawImage(img1,548,2,34,70,this.x,this.y,this.width,this.height)
+        }
+        else if(this.e==4){
+            ctx.drawImage(img1,582,2,34,70,this.x,this.y,this.width,this.height)
+        }
+        else if(this.e==5){
+            ctx.drawImage(img1,618,2,34,70,this.x,this.y,this.width,this.height)
+        }
     }
 }
+
 var cloud1 = new Cloud(200);
 var cloudArr = [];
 cloudArr.push(cloud1);
@@ -107,11 +126,11 @@ function 프레임마다실행(){
     timer++
     if(timer%선인장등장간격 === 0){
         for(var i = 0;i<Math.floor(Math.random()*3+1);i++){
-            var cactus = new lCactus(446);
+            var cactus = new lCactus(Math.floor(Math.random()*6));
             cactus.x -= i*33;
             cactusarr.push(cactus)
         }
-        var cloud1 = new Cloud(Math.floor(Math.random()*200+50))
+        var cloud1 = new Cloud(Math.floor(Math.random()*200)+50)
         cloudArr.push(cloud1);
         선인장등장간격 = Math.floor(Math.random()*160)+140
         score += timer;
@@ -129,7 +148,6 @@ function 프레임마다실행(){
     })
     cloudArr.forEach((a)=>{
         a.x -=1.5 ;
-        console.log(a.x)
         a.draw()
     })
     floorsArr.forEach((a,i,o)=>{
